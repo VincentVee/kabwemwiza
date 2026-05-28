@@ -6,15 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Kabwe & Mwiza | Wedding Invitation</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght=300;400;500;600;700&family=Montserrat:wght=300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ENABLE SMOOTH SCROLLING GLOBALLY */
-        html {
-            scroll-behavior: smooth;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -42,7 +37,6 @@
             border-radius: 4px;
         }
 
-        /* 1. ASSIGNED ID TO HERO FOR HOME NAVIGATION */
         .hero {
             min-height: 100vh;
             background-image: url('images/img.jpg');
@@ -58,7 +52,6 @@
             text-align: center;
             color: white;
             padding: 2rem;
-            scroll-margin-top: 100px; /* Ensures clean scroll position */
         }
 
         .hero::before {
@@ -219,7 +212,6 @@
             color: #b27d6b;
             letter-spacing: 4px;
             position: relative;
-            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.4s ease;
         }
 
         h2::after {
@@ -228,17 +220,6 @@
             font-size: 1.5rem;
             margin-top: 0.5rem;
             color: #d4b5a8;
-            transition: transform 0.4s ease;
-        }
-
-        /* NAVIGATION PULSE HIGHLIGHT EFFECT */
-        .section-highlight h2 {
-            color: #9a6856;
-            transform: scale(1.08);
-        }
-
-        .section-highlight h2::after {
-            transform: rotate(180deg) scale(1.2);
         }
 
         .story-text {
@@ -504,6 +485,92 @@
             opacity: 0.9;
         }
 
+        .bank-details {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .bank-title {
+            font-weight: 700;
+            color: #b27d6b;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .bank-title i {
+            margin-right: 0.5rem;
+        }
+
+        .bank-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed #f0e6df;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .bank-row:last-child {
+            border-bottom: none;
+        }
+
+        .bank-label {
+            font-weight: 600;
+            color: #5a4a42;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .bank-value {
+            color: #2c241f;
+            font-weight: 500;
+        }
+
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 16px;
+        }
+
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: #f0e6df;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #b27d6b;
+            margin-bottom: 0.5rem;
+        }
+
+        .qr-placeholder i {
+            font-size: 3rem;
+        }
+
+        .qr-placeholder span {
+            font-size: 0.7rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .qr-note {
+            font-size: 0.75rem;
+            color: #999;
+            font-family: 'Montserrat', sans-serif;
+        }
+
         .blessing-note {
             margin-top: 1.5rem;
             padding-top: 1rem;
@@ -520,6 +587,11 @@
         @media (max-width: 600px) {
             .registry-card {
                 padding: 1.5rem;
+            }
+
+            .bank-row {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .amount-highlight {
@@ -640,8 +712,6 @@
 
     <div class="nav" id="navbar">
         <ul>
-            <!-- 2. ADDED HOME LINK AT THE TOP -->
-            <li><a href="#home">Home</a></li>
             <li><a href="#story">Story</a></li>
             <li><a href="#details">Details</a></li>
             <li><a href="#schedule">Schedule</a></li>
@@ -651,8 +721,7 @@
         </ul>
     </div>
 
-    <!-- 3. ASSIGNED ID="HOME" TO THE HERO SECTION -->
-    <div class="hero" id="home">
+    <div class="hero">
         <h1>Kabwe & Mwiza</h1>
         <div class="date">22 August 2026, Princess Events. Waterfalls</div>
         <div class="couple">Together with our families, we invite you to celebrate our wedding</div>
@@ -726,6 +795,7 @@
             </div>
         </section>
 
+        <!-- Monetary Gifts Section - Add this after Schedule and before Gallery -->
         <section id="registry">
             <h2>Monetary Gifts</h2>
             <div class="registry-container">
@@ -895,9 +965,8 @@
             });
         }, observerOptions);
 
-        // Track both container sections and the hero section
-        document.querySelectorAll('section, .hero').forEach(el => {
-            observer.observe(el);
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
         });
 
         // Lightbox functionality
@@ -939,29 +1008,42 @@
 
         attendingSelect.dispatchEvent(new Event('change'));
 
-        // NAVIGATION EVENT HANDLER FOR MENU CLICKS
-        document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId.startsWith('#')) {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // Skip text pulsing logic if we are navigating back to Home
-                        if (targetId === '#home') return;
+        // FIXED: Using standard Fetch API with 'no-cors' mode to bypass iframe CSP errors
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-                        // Let the smooth scroll finish before running the pulse accent
-                        setTimeout(() => {
-                            targetElement.classList.add('section-highlight');
-                            
-                            // Remove accent class after animation finishes (800ms duration)
-                            setTimeout(() => {
-                                targetElement.classList.remove('section-highlight');
-                            }, 800);
-                        }, 400); 
-                    }
-                }
-            });
+            const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfaMpZ7DiibdA0VKY5U4fauX38fB81UdRgGRDkTvRN0UbFIqQ/formResponse";
+            const formData = new FormData(form);
+
+            fetch(googleFormUrl, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            })
+                .then(() => {
+                    // Display positive confirmation screen to your guest
+                    messageDiv.className = 'message success';
+                    messageDiv.style.display = 'block';
+                    messageDiv.textContent = "✨ Thank you! Your RSVP has been received. We can't wait to celebrate with you! ✨";
+
+                    // Clear out entries smoothly
+                    form.reset();
+                    attendingSelect.dispatchEvent(new Event('change'));
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Auto-hide alert after 5 seconds
+                    setTimeout(() => {
+                        messageDiv.style.display = 'none';
+                    }, 5000);
+                })
+                .catch((error) => {
+                    console.error("Submission failed: ", error);
+                    messageDiv.className = 'message error';
+                    messageDiv.style.display = 'block';
+                    messageDiv.textContent = "❌ Oops! Something went wrong. Please try again or contact us directly.";
+                });
         });
     </script>
 </body>
+
 </html>
